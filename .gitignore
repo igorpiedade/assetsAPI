@@ -1,1 +1,8 @@
+# Ignoring NodeJS modules
 /node_modules
+
+# Ignoring environment variable for security
+.env
+
+# Ignoring macOS files
+.DS_Store
