@@ -19,8 +19,10 @@ model Users {
   administrator Boolean  @default(false)
   created_at    DateTime @default(now())
 
-  Wallets Wallets[]
-  Assets  Assets[]
+  Wallets              Wallets[]
+  Assets               Assets[]
+  operationDescription OperationDescription[]
+  Operations           Operations[]
 }
 
 model Wallets {
@@ -32,7 +34,8 @@ model Wallets {
   Users   Users  @relation(fields: [user_id], references: [id])
   user_id String
 
-  Assets Assets[]
+  Assets     Assets[]
+  Operations Operations[]
 }
 
 model Assets {
@@ -47,4 +50,42 @@ model Assets {
 
   Wallets   Wallets @relation(fields: [wallet_id], references: [id])
   wallet_id String
+
+  AssetsClass   AssetsClass  @relation(fields: [assetClass_id], references: [id])
+  assetClass_id String
+  Operations    Operations[]
+}
+
+model AssetsClass {
+  id          String   @id @default(uuid())
+  name        String   @unique
+  description String
+  Assets      Assets[]
+}
+
+model OperationDescription {
+  id          String       @id @default(uuid())
+  description String
+  User        Users        @relation(fields: [user_id], references: [id])
+  user_id     String
+  Operations  Operations[]
+}
+
+model Operations {
+  id         String   @id @default(uuid())
+  shares     Float
+  amount     Float
+  created_at DateTime @default(now())
+
+  Users   Users  @relation(fields: [user_id], references: [id])
+  user_id String
+
+  Wallets   Wallets @relation(fields: [wallet_id], references: [id])
+  wallet_id String
+
+  Assets   Assets @relation(fields: [asset_id], references: [id])
+  asset_id String
+
+  OperationDescrition     OperationDescription @relation(fields: [operationDescription_id], references: [id])
+  operationDescription_id String
 }
