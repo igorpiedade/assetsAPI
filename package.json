@@ -4,6 +4,9 @@
   "main": "index.js",
   "repository": "https://github.com/igorpiedade/assetsAPI.git",
   "license": "MIT",
+  "scripts": {
+    "dev": "ts-node-dev --exit-child --transpile-only --ignore-watch node_modules src/infra/server.ts"
+  },
   "dependencies": {
     "@prisma/client": "^3.13.0",
     "@typescript-eslint/eslint-plugin": "^5.23.0",
