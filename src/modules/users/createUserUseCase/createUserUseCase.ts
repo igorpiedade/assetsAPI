@@ -14,6 +14,7 @@ export class CreateUserUseCase {
         const userAlreadyExist = await prisma.users.findFirst({
             where: {
                 email: {
+                    contains: email,
                     mode: "insensitive",
                 },
             },
