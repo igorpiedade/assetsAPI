@@ -28,17 +28,10 @@ export class AuthenticateUserUseCase {
 
         const secretKey = process.env.SK_JWT as string;
 
-        const token = sign(
-            {
-                email,
-                admin: user.administrator,
-            },
-            secretKey,
-            {
-                subject: user.id,
-                expiresIn: "1d",
-            }
-        );
+        const token = sign({ email }, secretKey, {
+            subject: user.id,
+            expiresIn: "1d",
+        });
 
         return token;
     }
