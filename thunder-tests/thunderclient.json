@@ -1,0 +1,58 @@
+[
+  {
+    "_id": "8fef1123-15e9-4b98-b2e5-095777abc3ae",
+    "colId": "65e5c751-1c76-48ec-8773-5ddfb176ded9",
+    "containerId": "",
+    "name": "Login",
+    "url": "http://localhost:3333/auth",
+    "method": "POST",
+    "sortNum": 10000,
+    "created": "2022-06-07T18:36:42.417Z",
+    "modified": "2022-06-07T18:36:42.417Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": "{\n    \"email\": \"igor@piedade.live\",\n    \"password\": \"123456\"\n}",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "7718bffc-d43b-4ca1-8c44-e953a104efe9",
+    "colId": "65e5c751-1c76-48ec-8773-5ddfb176ded9",
+    "containerId": "",
+    "name": "Create New User",
+    "url": "http://localhost:3333/user",
+    "method": "POST",
+    "sortNum": 20000,
+    "created": "2022-06-07T18:44:44.574Z",
+    "modified": "2022-06-07T18:44:44.574Z",
+    "headers": [],
+    "params": [],
+    "body": {
+      "type": "json",
+      "raw": " { \n     \"firstName\": \"Bob\",\n     \"lastName\": \"Star\",\n     \"email\": \"bobstart@piedade.live\",\n     \"password\": \"test123456\"\n} ",
+      "form": []
+    },
+    "tests": []
+  },
+  {
+    "_id": "69ba6b37-ff0e-446f-a649-b04b1934cbf5",
+    "colId": "65e5c751-1c76-48ec-8773-5ddfb176ded9",
+    "containerId": "",
+    "name": "List All Users",
+    "url": "http://localhost:3333/user",
+    "method": "GET",
+    "sortNum": 30000,
+    "created": "2022-06-07T18:46:28.157Z",
+    "modified": "2022-06-07T18:55:51.806Z",
+    "headers": [],
+    "params": [],
+    "auth": {
+      "type": "bearer",
+      "bearer": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiIzZjdiMjUwNS1iNGNjLTQ1NmItODg0ZC1hMmVkYzYzOTJiNzUiLCJhZG1pbiI6dHJ1ZSwiaWF0IjoxNjU0NjI4MTM1LCJleHAiOjE2NTQ3MTQ1MzUsInN1YiI6IjNmN2IyNTA1LWI0Y2MtNDU2Yi04ODRkLWEyZWRjNjM5MmI3NSJ9.uImJ1YiGHUNwZmKtMx8t58Pz0aXkfgwiwmUnOqX7dFs"
+    },
+    "tests": []
+  }
+]

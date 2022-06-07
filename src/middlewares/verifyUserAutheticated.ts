@@ -1,6 +1,11 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
+interface IPayload {
+    userId: string;
+    admin: boolean;
+}
+
 export async function verifyUserAuthenticated(
     request: Request,
     response: Response,
@@ -18,7 +23,7 @@ export async function verifyUserAuthenticated(
     const secretKey = process.env.SK_JWT as string;
 
     try {
-        const payloadData = verify(token, secretKey);
+        const payloadData = verify(token, secretKey) as IPayload;
 
         request.id_user = payloadData.userId as string;
         request.admin = payloadData.admin as boolean;
