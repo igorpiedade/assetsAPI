@@ -1,10 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 import { verify } from "jsonwebtoken";
 
-interface IPayload {
-    sub: string;
-}
-
 export async function verifyUserAuthenticated(
     request: Request,
     response: Response,
@@ -22,10 +18,13 @@ export async function verifyUserAuthenticated(
     const secretKey = process.env.SK_JWT as string;
 
     try {
-        const { sub } = verify(token, secretKey) as IPayload;
+        const payloadData = verify(token, secretKey);
 
-        request.id_user = sub;
+        request.id_user = payloadData.userId as string;
+        request.admin = payloadData.admin as boolean;
 
+        console.log(request.admin);
+        console.log(request.id_user);
         return next();
     } catch {
         return response.status(401).json({
