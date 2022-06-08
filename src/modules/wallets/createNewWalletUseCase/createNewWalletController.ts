@@ -10,6 +10,7 @@ export class CreateNewWalletController {
         const newWallet = await createNewWalletUseCase.execute({
             walletName,
             description,
+            user_id: request.id_user,
         });
         return response.status(200).json(newWallet);
     }

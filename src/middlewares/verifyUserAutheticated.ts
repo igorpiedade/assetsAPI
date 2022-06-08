@@ -28,8 +28,6 @@ export async function verifyUserAuthenticated(
         request.id_user = payloadData.userId as string;
         request.admin = payloadData.admin as boolean;
 
-        console.log(request.admin);
-        console.log(request.id_user);
         return next();
     } catch {
         return response.status(401).json({
