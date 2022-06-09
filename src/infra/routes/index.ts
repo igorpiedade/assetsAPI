@@ -6,12 +6,14 @@ import { AuthenticateUserController } from "../../modules/users/authenticateUser
 import { CreateUserController } from "../../modules/users/createUserUseCase/createUserController";
 import { ListAllUsersController } from "../../modules/users/listAllUsersUseCase/listAllUsersController";
 import { CreateNewWalletController } from "../../modules/wallets/createNewWalletUseCase/createNewWalletController";
+import { ListAllWalletsController } from "../../modules/wallets/listAllWalletsUseCase/listAllwalletsController";
 
 const routes = Router();
 
 const createUserController = new CreateUserController();
 const listAllUsersController = new ListAllUsersController();
 const authenticateUserController = new AuthenticateUserController();
+const listAllWalletsController = new ListAllWalletsController();
 
 const createNewWalletController = new CreateNewWalletController();
 
@@ -31,5 +33,7 @@ routes.post(
     verifyUserAuthenticated,
     createNewWalletController.handle
 );
+
+routes.get("/wallet", verifyUserAuthenticated, listAllWalletsController.handle);
 
 export { routes };

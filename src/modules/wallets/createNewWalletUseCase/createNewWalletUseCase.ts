@@ -1,5 +1,3 @@
-import { request } from "express";
-
 import { prisma } from "../../../infra/database/prismaClient";
 
 interface ICreateWallet {
