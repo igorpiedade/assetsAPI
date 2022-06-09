@@ -2,6 +2,7 @@ import { Router } from "express";
 
 import { veryfyAdmin } from "../../middlewares/verifyAdmin";
 import { verifyUserAuthenticated } from "../../middlewares/verifyUserAutheticated";
+import { CreateNewAssetController } from "../../modules/_assets/createNewAssetController";
 import { AuthenticateUserController } from "../../modules/users/authenticateUserUseCase/authenticateUserController";
 import { CreateUserController } from "../../modules/users/createUserUseCase/createUserController";
 import { ListAllUsersController } from "../../modules/users/listAllUsersUseCase/listAllUsersController";
@@ -10,14 +11,12 @@ import { ListAllWalletsController } from "../../modules/wallets/listAllWalletsUs
 
 const routes = Router();
 
+// Users routes
+
 const createUserController = new CreateUserController();
 const listAllUsersController = new ListAllUsersController();
 const authenticateUserController = new AuthenticateUserController();
-const listAllWalletsController = new ListAllWalletsController();
 
-const createNewWalletController = new CreateNewWalletController();
-
-// Users Routes
 routes.post("/user", createUserController.handle);
 routes.get(
     "/user",
@@ -28,6 +27,10 @@ routes.get(
 routes.post("/auth", authenticateUserController.handle);
 
 // Wallets Routes
+
+const listAllWalletsController = new ListAllWalletsController();
+const createNewWalletController = new CreateNewWalletController();
+
 routes.post(
     "/wallet",
     verifyUserAuthenticated,
@@ -35,5 +38,11 @@ routes.post(
 );
 
 routes.get("/wallet", verifyUserAuthenticated, listAllWalletsController.handle);
+
+// Assets Routes
+
+const createNewAssetController = new CreateNewAssetController();
+
+routes.post("/asset", verifyUserAuthenticated, createNewAssetController.handle);
 
 export { routes };
