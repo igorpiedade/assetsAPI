@@ -1,9 +1,9 @@
-import { prisma } from "../../infra/database/prismaClient";
+import { prisma } from "../../../infra/database/prismaClient";
 
 interface ICreateAsset {
     assetName: string;
     description: string;
-    price: float;
+    price: number;
     wallet_id: string;
     user_id: string;
     assetClass_id: string;
@@ -14,7 +14,6 @@ export class CreateNewAssetUseCase {
         assetName,
         description,
         price,
-        wallet_id,
         user_id,
         assetClass_id,
     }: ICreateAsset) {
@@ -23,7 +22,6 @@ export class CreateNewAssetUseCase {
                 assetName,
                 description,
                 price,
-                wallet_id,
                 user_id,
                 assetClass_id,
             },

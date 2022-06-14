@@ -34,22 +34,18 @@ model Wallets {
   Users   Users  @relation(fields: [user_id], references: [id])
   user_id String
 
-  Assets     Assets[]
   Operations Operations[]
 }
 
 model Assets {
   id          String   @id @default(uuid())
-  assetName   String   @unique
+  assetName   String
   description String
   price       Float
   created_at  DateTime @default(now())
 
   Users   Users  @relation(fields: [user_id], references: [id])
   user_id String
-
-  Wallets   Wallets @relation(fields: [wallet_id], references: [id])
-  wallet_id String
 
   AssetsClass   AssetsClass  @relation(fields: [assetClass_id], references: [id])
   assetClass_id String
