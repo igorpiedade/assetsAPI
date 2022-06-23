@@ -6,6 +6,7 @@ import { CreateNewAssetController } from "../../modules/_assets/createNewAssetUs
 import { ListAssetsController } from "../../modules/_assets/listAssetsUseCase/listAssetsController";
 import { CreateNewOperationController } from "../../modules/operations/createNewOperationUseCase/createNewOperationController";
 import { ListOperationsController } from "../../modules/operations/listOperationsUseCase/listOperationsController";
+import { UpdateOperationController } from "../../modules/operations/updateOperationUseCase/updateOperationController";
 import { AuthenticateUserController } from "../../modules/users/authenticateUserUseCase/authenticateUserController";
 import { CreateUserController } from "../../modules/users/createUserUseCase/createUserController";
 import { ListAllUsersController } from "../../modules/users/listAllUsersUseCase/listAllUsersController";
@@ -53,6 +54,7 @@ export { routes };
 
 const createNewOperationController = new CreateNewOperationController();
 const listUserOperations = new ListOperationsController();
+const updateOperation = new UpdateOperationController();
 
 routes.post(
     "/operation",
@@ -61,3 +63,4 @@ routes.post(
 );
 
 routes.get("/operation", verifyUserAuthenticated, listUserOperations.handle);
+routes.put("/operation", verifyUserAuthenticated, updateOperation.handle);
