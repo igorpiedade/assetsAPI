@@ -23,6 +23,7 @@ model Users {
   Assets               Assets[]
   operationDescription OperationDescription[]
   Operations           Operations[]
+  AssetsClass          AssetsClass[]
 }
 
 model Wallets {
@@ -54,9 +55,12 @@ model Assets {
 
 model AssetsClass {
   id          String   @id @default(uuid())
-  name        String   @unique
+  name        String
   description String
   Assets      Assets[]
+
+  Users   Users?  @relation(fields: [user_id], references: [id])
+  user_id String?
 }
 
 model OperationDescription {
