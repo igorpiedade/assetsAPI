@@ -1,4 +1,4 @@
-import { prisma } from "../../infra/database/prismaClient";
+import { prisma } from "../../../infra/database/prismaClient";
 
 interface INewClass {
     name: string;

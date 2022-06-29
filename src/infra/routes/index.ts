@@ -5,7 +5,8 @@ import { veryfyAdmin } from "../../middlewares/verifyAdmin";
 import { verifyUserAuthenticated } from "../../middlewares/verifyUserAutheticated";
 import { CreateNewAssetController } from "../../modules/_assets/createNewAssetUseCase/createNewAssetController";
 import { ListAssetsController } from "../../modules/_assets/listAssetsUseCase/listAssetsController";
-import { CreateNewClassController } from "../../modules/assetsClass/createNewClassController";
+import { CreateGlobalClassController } from "../../modules/assetsClass/createGlobalClassUseCase/createGlobalClassController";
+import { CreateNewClassController } from "../../modules/assetsClass/createNewClassUseCase/createNewClassController";
 import { CreateNewOperationController } from "../../modules/operations/createNewOperationUseCase/createNewOperationController";
 import { ListOperationsController } from "../../modules/operations/listOperationsUseCase/listOperationsController";
 import { UpdateOperationController } from "../../modules/operations/updateOperationUseCase/updateOperationController";
@@ -41,8 +42,10 @@ routes.post("/asset", verifyUserAuthenticated, createNewAssetController.handle);
 routes.get("/asset", verifyUserAuthenticated, listAssetsController.handle);
 
 // Assets Class Routes
+const createGlobalClassController = new CreateGlobalClassController();
 const createNewClassController = new CreateNewClassController();
 
+routes.post("/assetclass/global", verifyUserAuthenticated, veryfyAdmin, createGlobalClassController.handle);
 routes.post("/assetclass", verifyUserAuthenticated, createNewClassController.handle);
 
 // Operation Routes
