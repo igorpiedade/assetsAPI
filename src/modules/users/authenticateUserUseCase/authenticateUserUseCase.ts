@@ -30,8 +30,9 @@ export class AuthenticateUserUseCase {
 
         const token = sign(
             {
-                userId: user.id,
+                email,
                 admin: user.administrator,
+                name: `${user.firstName} ${user.lastName}`,
             },
             secretKey,
             {
